@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #fff; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        header h1 { font-size: 24px; }
+        .profile-icon { width: 40px; height: 40px; border-radius: 50%; background-color: #ddd; }
+        .course-container { display: flex; flex-direction: column; gap: 20px; }
+        .course-card { background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 20px; display: flex; gap: 20px; }
+        .course-img { width: 150px; height: 100px; border-radius: 10px; object-fit: cover; }
+        .course-info { flex: 1; }
+        .course-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+        .course-meta { color: #666; font-size: 14px; margin-bottom: 10px; }
+        .course-button { background-color: #6a5acd; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; text-align: center; }
+        .course-button:hover { background-color: #574b90; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Khóa học của tôi</h1>
+        <div class="profile-icon"></div>
+    </header>
+
+    <div class="course-container">
+        <div class="course-card">
+            <img src="https://via.placeholder.com/150" alt="Cyber Security" class="course-img">
+            <div class="course-info">
+                <div class="course-title">Nhập môn an toàn thông tin</div>
+                <div class="course-meta">SoICT • IT4015 • Đã Bắt đầu - 18/02/2024</div>
+                <a href="#" class="course-button">Xem khóa học</a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="https://via.placeholder.com/150" alt="Final Exam" class="course-img">
+            <div class="course-info">
+                <div class="course-title">Thi cuối kỳ 2024-1: IT4785 / Phát triển...</div>
+                <div class="course-meta">SoICT • FinalExam-2024-1 • Đã Kết thúc - 31/01/2025</div>
+                <a href="#" class="course-button">Xem khóa học cũ</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
