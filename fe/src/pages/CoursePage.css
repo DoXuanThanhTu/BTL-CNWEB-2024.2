@@ -1,0 +1,23 @@
+.course {
+    flex: 1;
+  }
+  .course h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .btn {
+    padding: 8px 16px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  .btn:hover {
+    background: #2c5282;
+  }
+  .course-list {
+    display: flex;
+    flex-direction: column;
+  }
+  

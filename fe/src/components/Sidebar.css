@@ -1,0 +1,19 @@
+.sidebar {
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 16px;
+    font-size: 14px;
+  }
+  .sidebar strong {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .sidebar p {
+    margin: 4px 0;
+  }
+  .sidebar .note {
+    color: #666;
+  }
+  
