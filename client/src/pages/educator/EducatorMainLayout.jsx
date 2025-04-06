@@ -5,8 +5,10 @@ import { Outlet } from "react-router-dom";
 const EducatorMainLayout = () => {
   return (
     <div style={{ display: "flex" }}>
-      <Sidebar style={{}} />
-      <Outlet style={{}} />
+      <Sidebar />
+      <div style={{ flex: 1 }}>
+        <Outlet />
+      </div>
     </div>
   );
 };

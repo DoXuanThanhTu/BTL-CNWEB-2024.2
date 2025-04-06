@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Course from "../../../components/educator/course/Course";
 import "./MyCourse.css";
-import { Link } from "react-router";
 const MyCourse = () => {
   const [courses, setCourses] = useState([]);
   const getAllCourse = async () => {
@@ -16,7 +15,7 @@ const MyCourse = () => {
     <div className="myCourse">
       <div className="myCourseContainer">
         {courses.map((course) => (
-          <Course course={course} />
+          <Course key={course._id} course={course} />
         ))}
       </div>
     </div>

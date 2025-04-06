@@ -47,9 +47,9 @@
 }
 .fetch-course-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: calc(100vw - 200px);
+  gap: 50px;
+  margin-left: 10px;
 }
 .fetch-course-image {
   width: 400px;

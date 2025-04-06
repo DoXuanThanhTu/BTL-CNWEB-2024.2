@@ -1,18 +1,20 @@
 import mongoose from "mongoose";
 
-const ChapterSchema = new mongoose.Schema(
+const LessonSchema = new mongoose.Schema(
   {
-    courseId: {
+    chapterId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Course",
+      ref: "Chapter",
       required: true,
     },
     title: { type: String, required: true },
-    description: { type: String },
+    content: { type: String },
+    videoUrl: { type: String },
+    attachments: { type: [String] },
     order: { type: Number, required: true },
     isPublished: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Chapter", ChapterSchema);
+export default mongoose.model("Lesson", LessonSchema);

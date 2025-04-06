@@ -28,6 +28,7 @@ const SidebarItem = styled(Link)`
 const Sidebar = () => {
   return (
     <Container>
+      <SidebarItem to="/educator/dashboard">📚 Dashboard</SidebarItem>
       <SidebarItem to="/educator/my-course">📚 My Courses</SidebarItem>
       <SidebarItem to="/educator/add-course">➕ Add New Course</SidebarItem>
     </Container>

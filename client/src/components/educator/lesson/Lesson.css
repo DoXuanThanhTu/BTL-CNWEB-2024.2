@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.editItem {
+  display: flex;
+}
+
+.editItem > :first-child {
+  flex: 1;
+}
+
+.editItem > :last-child {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editItem textarea {
+  width: 100%;
+  height: 100%;
+}
+.editItem input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}

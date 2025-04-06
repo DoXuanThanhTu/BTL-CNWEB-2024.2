@@ -1,0 +1,57 @@
+.chapter {
+  list-style: none;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.chapter-header:hover {
+  background-color: #c9c9f7;
+}
+
+.chapter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 30px;
+  padding: 12px;
+  cursor: pointer;
+}
+.options {
+  display: flex;
+  padding: 5px 10px 5px 18px;
+  gap: 10px;
+}
+.option {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.icon.rotate {
+  transform: rotate(180deg);
+}
+
+.lessons {
+  list-style: none;
+  min-height: 30px;
+}
+
+.lesson {
+  padding: 15px 10px 15px 18px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.lesson:hover {
+  background-color: #ddd;
+}

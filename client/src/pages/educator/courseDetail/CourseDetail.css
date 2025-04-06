@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+}
+.right-container {
+  flex: 1;
+}
+.chapters {
+  padding: 10px;
+  list-style: none;
+}
+.publish {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Button  */
+.published,
+.no-published,
+.remove {
+  padding: 10px 20px;
+  border: 0.5px solid gray;
+  cursor: pointer;
+}
+.no-published {
+  background-color: rgb(239, 95, 143);
+}
+.published {
+  background-color: rgb(16, 176, 16);
+}
+.remove {
+  background-color: rgb(244, 140, 140);
+}
