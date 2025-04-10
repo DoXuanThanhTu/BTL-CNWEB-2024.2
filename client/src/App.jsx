@@ -10,7 +10,7 @@ import Loading from "./components/students/Loading";
 // Educator
 import CourseDetailEducator from "./pages/educator/courseDetail/CourseDetail";
 import Dashboard from "./pages/educator/dashboard/Dashboard";
-import AddCourse from "./pages/educator/AddCourse";
+import AddCourse from "./pages/educator/addCourse/AddCourse";
 import MyCourse from "./pages/educator/myCourse/MyCourse";
 import Lesson from "./components/educator/lesson/Lesson";
 import EducatorMainLayout from "./pages/educator/EducatorMainLayout";

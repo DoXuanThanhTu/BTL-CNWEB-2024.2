@@ -2,14 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Container = styled.div`
-  min-width: 200px;
-  height: 100vh;
+const SidebarContainer = styled.div`
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #2c3e50;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  height: 100vh;
+  z-index: 1000;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  transition: transform 0.3s ease;
+  padding-top: 50px;
 `;
 
 const SidebarItem = styled(Link)`
@@ -18,20 +25,42 @@ const SidebarItem = styled(Link)`
   font-size: 16px;
   padding: 10px;
   border-radius: 5px;
-  transition: background 0.3s;
 
   &:hover {
     background-color: #34495e;
   }
 `;
 
-const Sidebar = () => {
+const ToggleButton = styled.button`
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1101;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #34495e;
+  }
+`;
+
+const Sidebar = ({ open, setOpen }) => {
   return (
-    <Container>
-      <SidebarItem to="/educator/dashboard">📚 Dashboard</SidebarItem>
-      <SidebarItem to="/educator/my-course">📚 My Courses</SidebarItem>
-      <SidebarItem to="/educator/add-course">➕ Add New Course</SidebarItem>
-    </Container>
+    <>
+      <ToggleButton onClick={() => setOpen(!open)}>
+        {open ? "✖" : "☰"}
+      </ToggleButton>
+      <SidebarContainer open={open}>
+        <SidebarItem to="/educator/dashboard">📚 Dashboard</SidebarItem>
+        <SidebarItem to="/educator/my-course">📚 My Courses</SidebarItem>
+        <SidebarItem to="/educator/add-course">➕ Add New Course</SidebarItem>
+      </SidebarContainer>
+    </>
   );
 };
 

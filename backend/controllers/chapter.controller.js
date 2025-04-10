@@ -1,3 +1,4 @@
+import Lesson from "../models/lesson.model.js";
 import Chapter from "../models/chapter.model.js";
 
 const getAllChapter = async (req, res) => {
@@ -9,8 +10,12 @@ const createChapter = async (req, res) => {
   res.json(newChapter);
 };
 const getChapter = async (req, res) => {
-  // res.json(req.params);
   const chapter = await Chapter.findById(req.params.id);
   res.json(chapter);
 };
-export { getAllChapter, createChapter, getChapter };
+const deleteChapter = async (req, res) => {
+  await Lesson.deleteMany({ chapterId: req.params.id });
+  await Chapter.findByIdAndDelete(req.params.id);
+  res.json("Delete Success");
+};
+export { getAllChapter, createChapter, getChapter, deleteChapter };

@@ -18,4 +18,8 @@ const updateLesson = async (req, res) => {
   });
   res.json(lesson);
 };
-export { createLesson, getAllLesson, getALesson, updateLesson };
+const deleteLesson = async (req, res) => {
+  await Lesson.findByIdAndDelete(req.params.lessonId);
+  res.json("Delete Success");
+};
+export { createLesson, getAllLesson, getALesson, updateLesson, deleteLesson };

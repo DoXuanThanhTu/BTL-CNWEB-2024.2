@@ -179,6 +179,33 @@ const Course = ({ course }) => {
           </div>
           <div className="course-info">
             <div className="course-title">{course.title}</div>
+            {course.isPublished ? (
+              <p
+                style={{
+                  fontSize: "18px",
+                  color: "white",
+                  backgroundColor: "green",
+                  padding: "8px",
+                  borderRadius: "5px",
+                  width: "fit-content",
+                }}
+              >
+                Published
+              </p>
+            ) : (
+              <p
+                style={{
+                  fontSize: "18px",
+                  color: "white",
+                  backgroundColor: "gray",
+                  padding: "8px",
+                  borderRadius: "5px",
+                  width: "fit-content",
+                }}
+              >
+                Not Published
+              </p>
+            )}
           </div>
         </div>
       </Link>

@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
+const proxy = import.meta.env.VITE_API_URL;
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -13,13 +15,10 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(100% - 20px);
   @media (min-width: 800px) {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0 20px;
     min-width: 90%;
-  }
-  @media (max-width: 800px) {
-    width: calc(100% - 20px);
   }
 `;
 const Main = styled.div`
@@ -33,13 +32,11 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 90%;
+  max-width: 500px;
 
-  width: 400px;
   @media (max-width: 430px) {
-    width: 300px;
-  }
-  @media (min-width: 800px) {
-    width: 500px;
+    max-width: 300px;
   }
 `;
 const Button = styled.button`
@@ -55,7 +52,6 @@ const Button = styled.button`
   }
 `;
 const Input = styled.input`
-  margin-top: 10px;
   width: 100%;
   font-size: 18px;
   height: 35px;
@@ -66,189 +62,183 @@ const Input = styled.input`
     outline: none;
     box-shadow: 0px 1px 10px 0px rgba(124, 134, 203, 0.75);
   }
-  &:hover {
-    cursor: text;
-  }
-  cursor: pointer;
 `;
 const ButtonSubmit = styled.button`
   background-color: #3738e2;
   color: white;
-  padding: 5px 20px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 16px;
   width: 100%;
   height: 45px;
+  cursor: pointer;
   &:hover {
     background-color: #0b40de;
   }
+  margin-top: 20px;
 `;
 const ButtonToggle = styled.button`
   background-color: #ededfc;
   color: #3738e2;
-  padding: 5px 20px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 16px;
   width: 100%;
   height: 45px;
+  cursor: pointer;
   &:hover {
     background-color: #dadae2ab;
   }
 `;
 const Hr = styled.hr`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 400px;
-  @media (max-width: 430px) {
-    width: 300px;
-  }
-  @media (min-width: 800px) {
-    width: 500px;
-  }
+  margin: 10px 0;
+  width: 100%;
+  max-width: 500px;
   border: 0.5px solid #dfe3e6;
 `;
+
+const AuthForm = ({ fields, data, onChange, onSubmit, submitText }) => (
+  <form onSubmit={onSubmit}>
+    {fields.map(({ name, type, label }) => (
+      <div key={name} style={{ marginTop: 10 }}>
+        <label htmlFor={name}>{label}</label>
+        <Input type={type} name={name} value={data[name]} onChange={onChange} />
+      </div>
+    ))}
+    <ButtonSubmit type="submit">{submitText}</ButtonSubmit>
+  </form>
+);
+
 const Login = () => {
-  const [login, setLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isLogin) {
+      await handleLogin();
+    } else {
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      const res = await axios.post(
+        `${proxy}/users/login`,
+        {
+          email: data.email,
+          password: data.password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      const role = res.data.role;
+      console.log(role);
+      if (role == "student") {
+        location.pathname = "/";
+      } else if (role == "educator") {
+        location.pathname = "/educator";
+      }
+    } catch (error) {}
+  };
+
+  const loginFields = [
+    { name: "email", type: "email", label: "Email" },
+    { name: "password", type: "password", label: "Password" },
+  ];
+  const registerFields = [
+    { name: "username", type: "text", label: "Username" },
+    { name: "email", type: "email", label: "Email" },
+    { name: "password", type: "password", label: "Password" },
+  ];
+
   return (
     <Container>
       <Wrapper>
-        {login ? (
-          <Main>
-            <h1>Sign in</h1>
-            <Section>
-              <Button>Sign in with Google</Button>
-            </Section>
-            <div
+        <Main>
+          <h1>{isLogin ? "Sign in" : "Create an account"}</h1>
+          <Section>
+            <Button>
+              {isLogin ? "Sign in with Google" : "Sign up with Google"}
+            </Button>
+          </Section>
+
+          <div
+            style={{
+              margin: "20px 10px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Hr />
+            <span
               style={{
-                margin: "20px 10px 20px 10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                backgroundColor: "white",
+                zIndex: 1,
+                marginTop: "-28px",
               }}
             >
-              <Hr />
+              or {isLogin ? "sign in with" : "create a new one here"}
+            </span>
+          </div>
+
+          <Section>
+            <AuthForm
+              fields={isLogin ? loginFields : registerFields}
+              data={data}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              submitText={isLogin ? "Sign in" : "Create Account"}
+            />
+            {isLogin && (
               <span
                 style={{
-                  backgroundColor: "white",
-                  zIndex: 1,
-                  marginTop: "-28px",
+                  color: "blue",
+                  fontSize: "16px",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "flex-end",
                 }}
               >
-                or sign in with
+                Forget password?
               </span>
-            </div>
-            <Section>
-              <form>
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <Input type="email" name="email" />
-                </div>
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <Input type="password" name="password" />
-                </div>
-                <span
-                  style={{
-                    color: "blue",
-                    fontSize: "16px",
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    margin: "10px 0 10px 0",
-                  }}
-                >
-                  Forget password?
-                </span>
-                <ButtonSubmit type="submit">
-                  {login ? "Sign in" : "Create Account"}
-                </ButtonSubmit>
-              </form>
-            </Section>
-            <Hr />
-            <Section
-              style={{
-                alignItems: "center",
-                fontSize: "14px",
-                color: "gray",
+            )}
+          </Section>
+
+          <Hr />
+
+          <Section
+            style={{ alignItems: "center", fontSize: "14px", color: "gray" }}
+          >
+            <span style={{ marginBottom: "5px" }}>
+              {isLogin ? "First time here?" : "Have an account?"}
+            </span>
+            <ButtonToggle
+              onClick={() => {
+                setIsLogin(!isLogin);
+                setData({
+                  username: "",
+                  email: "",
+                  password: "",
+                });
               }}
             >
-              <span style={{ marginBottom: "5px" }}>First time here?</span>
-              <ButtonToggle onClick={() => setLogin(false)}>
-                Create an Account
-              </ButtonToggle>
-            </Section>
-          </Main>
-        ) : (
-          <Main>
-            <h1>Create an account using</h1>
-            <Section>
-              <Button>Google</Button>
-            </Section>
-            <div
-              style={{
-                margin: "20px 10px 20px 10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Hr />
-              <span
-                style={{
-                  backgroundColor: "white",
-                  zIndex: 1,
-                  marginTop: "-28px",
-                }}
-              >
-                or create a new one here
-              </span>
-            </div>
-            <Section>
-              <form>
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <Input type="email" name="email" />
-                </div>
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <Input type="password" name="password" />
-                </div>
-                <span
-                  style={{
-                    color: "blue",
-                    fontSize: "16px",
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    margin: "10px 0 10px 0",
-                  }}
-                >
-                  Forget password?
-                </span>
-                <ButtonSubmit type="submit">
-                  {login ? "Sign in" : "Create Account"}
-                </ButtonSubmit>
-              </form>
-            </Section>
-            <Hr />
-            <Section
-              style={{
-                alignItems: "center",
-                fontSize: "14px",
-                color: "gray",
-              }}
-            >
-              <span style={{ marginBottom: "5px" }}>First time here?</span>
-              <ButtonToggle onClick={() => setLogin(false)}>
-                Create an Account
-              </ButtonToggle>
-            </Section>
-          </Main>
-        )}
+              {isLogin ? "Create an Account" : "Sign in"}
+            </ButtonToggle>
+          </Section>
+        </Main>
       </Wrapper>
     </Container>
   );
