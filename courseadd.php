@@ -1,7 +1,7 @@
 <?php
-include "header.php";
-include "slider.php";
-include "class/course.php.php";
+include "src/header.php";
+include "src/slider.php";
+include "class/course.php";
 ?>
 <?php
 //----Add
