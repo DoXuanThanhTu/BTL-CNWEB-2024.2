@@ -1,71 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>HUSTack - Programming Student</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký lớp học</title>
+  <link rel="stylesheet" href="style-index.css">
 </head>
 <body>
-  
-    <h2>HUSTack</h2>
-    <div class="sidebar">
-    <nav>
-      <a href="#">Dashboard</a>
-      <a href="#">Programming Student</a>
-      <a href="#">Learning</a>
-      <a href="#">Exam</a>
-    </nav>
-  </div>
-  <div class="content">
-    <div class="topbar">
-      <span class="lang-select">
-        <select>
-          <option>VIE</option>
-          <option>ENG</option>
-        </select>
-      </span>
-      <span style="margin-left: 20px;">🔔<sup>1</sup></span>
-      <span style="background: #e91e63; border-radius: 50%; padding: 10px; color: white; margin-left: 15px;">C2</span>
-    </div>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Dashboard</h2>
+      <div class="section">
+        <h3>Programming Student</h3>
+        <ul>
+          <li><span>Learning</span>
+            <ul>
+              <li class="active">Class Registration</li>
+              <li>Classes</li>
+              <li>Join Quiz Test</li>
+              <li>My Quiz Test</li>
+              <li>Create Thesis</li>
+            </ul>
+          </li>
+        </ul>
+        <ul>
+          <li>Exam</li>
+        </ul>
+      </div>
+    </aside>
 
-    <div class="tabs">
-      <div class="tab active">Công khai</div>
-      <div class="tab">Đã đăng ký</div>
-    </div>
+    <main class="main-content">
+      <h1>Đăng ký lớp học - Học kỳ 20252</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm">
+        <button>&times;</button>
+      </div>
 
-    <table>
-      <tr>
-        <th>Cuộc thi</th>
-        <th>Trạng thái</th>
-        <th>Người quản lý</th>
-      </tr>
-      <tr>
-        <td><a href="#">Programming Advanced (data structures & algorithms)</a></td>
-        <td class="status">Đang diễn ra</td>
-        <td>admin</td>
-      </tr>
-      <tr>
-        <td><a href="#">Programming intermediate (basic data structure & algorithms)</a></td>
-        <td class="status">Đang diễn ra</td>
-        <td>admin</td>
-      </tr>
-      <tr>
-        <td><a href="#">Object-Oriented Programming with Java</a></td>
-        <td class="status">Đang diễn ra</td>
-        <td>admin</td>
-      </tr>
-      <tr>
-        <td><a href="#">Programming Beginner</a></td>
-        <td class="status">Đang diễn ra</td>
-        <td>admin</td>
-      </tr>
-      <tr>
-        <td><a href="#">General</a></td>
-        <td class="status">Đang diễn ra</td>
-        <td>admin</td>
-      </tr>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Mã lớp</th>
+            <th>Mã học phần</th>
+            <th>Tên học phần</th>
+            <th>Loại lớp</th>
+            <th>Khoa/Viện</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CTDL_20202</td>
+            <td>IT3011</td>
+            <td>Cấu trúc dữ liệu và thuật toán</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>DSA</td>
+            <td>IT3011</td>
+            <td>Cấu trúc dữ liệu và thuật toán</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>TOAN_RR_20202</td>
+            <td>IT3020</td>
+            <td>Toán rời rạc</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>FUNDAMENTALS_OPTIMIZATION</td>
+            <td>IT3052E</td>
+            <td>Fundamentals of optimization</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>TTUD_20202</td>
+            <td>IT3170</td>
+            <td>Thuật toán ứng dụng</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>DSA_BASIC_LAB</td>
+            <td>IT3230E</td>
+            <td>Data Structures and Algorithms Basic Lab</td>
+            <td>TN</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>REACT</td>
+            <td>REACT</td>
+            <td>React - Frontend Web Development</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+          <tr>
+            <td>SPRING_BOOT</td>
+            <td>SPRING_BOOT</td>
+            <td>Java with Spring Boot framework</td>
+            <td>LT+BT</td>
+            <td>KCNTT</td>
+            <td><button class="join-btn">Tham gia</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
   </div>
 </body>
 </html>

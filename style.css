@@ -187,15 +187,3 @@ table{
 }
 
 /*----------------------*/
-/*---Order.php --------*/
-.admin-content-right-cartegory_list button{
-  display: block;
-  margin-top: 10px;
-  height: 30px;
-  width: 100px;
-  cursor: pointer;
-  background-color: brown;
-  border: none;
-  color: white;
-  transition: all 0.2s ease; 
-}

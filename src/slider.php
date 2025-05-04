@@ -7,7 +7,7 @@
                     <li><a href="">Danh sách Khóa học</a></li>
                 </ul>
             </li>
-            <li><a href="">Loại sản phẩm</a>
+            <li><a href="">Lớp học</a>
                 <ul>
                     <li><a href="">Thêm Lớp học</a></li>
                     <li><a href="">Danh sách Lớp</a></li>
