@@ -1,51 +1,58 @@
 <?php
-include "src/database.php";
+include "backend/database.php";
 ?>
 
 <?php
-class brand {
+
+class course {
     private $db;
-    public function __construct()
-    {
-        $this -> db = new Database();
+
+    public function __construct() {
+        $this->db = new Database();
     }
-    public function insert_brand($cartegory_id, $brand_name){
-        $query = "INSERT INTO tbl_brand (cartegory_id, brand_name) VALUES ('$cartegory_id', '$brand_name')";
-        $result= $this ->db->insert($query);
-        header('Location:brandlist.php');
-        return $result;
+
+    // Hiển thị danh mục từ bảng brand
+    public function show_cartegory() {
+        $query = "SELECT * FROM brand ORDER BY cartegory_id DESC";
+        return $this->db->select($query);
     }
-    public function show_cartegory(){
-        $query = "SELECT * FROM tbl_cartegory ORDER BY cartegory_id DESC";
-        $result= $this ->db->select($query);
-        return $result;
+
+    // Thêm học phần mới vào bảng course
+    public function insert_course($ma_lop, $ma_hoc_phan, $ten_hoc_phan, $loai_lop, $khoa_vien, $cartegory_id) {
+        $query = "INSERT INTO course (ma_lop, ma_hoc_phan, ten_hoc_phan, loai_lop, khoa_vien, cartegory_id) 
+                  VALUES ('$ma_lop', '$ma_hoc_phan', '$ten_hoc_phan', '$loai_lop', '$khoa_vien', '$cartegory_id')";
+        return $this->db->insert($query);
     }
-    public function show_brand(){
-        // $query = "SELECT * FROM tbl_brand ORDER BY brand_id DESC";
-        $query = "SELECT tbl_brand.*, tbl_cartegory.cartegory_name
-        FROM tbl_brand INNER JOIN tbl_cartegory ON tbl_brand.cartegory_id = tbl_cartegory.cartegory_id
-        ORDER BY tbl_brand.brand_id DESC";
-        $result= $this ->db->select($query);
-        return $result;
+
+    // Hiển thị danh sách các khóa học
+    public function show_course() {
+        $query = "SELECT * FROM course ORDER BY course_id DESC";
+        return $this->db->select($query);
     }
-    public function get_brand($brand_id){
-        $query = "SELECT * FROM tbl_brand WHERE brand_id = '$brand_id'";
-        $result= $this ->db->select($query);
-        return $result;
+
+    // Lấy thông tin khóa học theo course_id
+    public function get_course($course_id) {
+        $query = "SELECT * FROM course WHERE course_id = '$course_id'";
+        return $this->db->select($query);
     }
-    public function update_brand($cartegory_id, $brand_name, $brand_id){
-        $query = "UPDATE tbl_brand SET brand_name = '$brand_name', cartegory_id = '$cartegory_id'
-        WHERE brand_id = '$brand_id'";
-        $result= $this ->db->update($query);
-        header('Location:brandlist.php');
-        return $result;
+
+    // Cập nhật thông tin khóa học theo course_id
+    public function update_course($course_id, $ma_lop, $ma_hoc_phan, $ten_hoc_phan, $loai_lop, $khoa_vien, $cartegory_id) {
+        $query = "UPDATE course SET 
+                    ma_lop = '$ma_lop', 
+                    ma_hoc_phan = '$ma_hoc_phan', 
+                    ten_hoc_phan = '$ten_hoc_phan', 
+                    loai_lop = '$loai_lop', 
+                    khoa_vien = '$khoa_vien', 
+                    cartegory_id = '$cartegory_id'
+                  WHERE course_id = '$course_id'";
+        return $this->db->update($query);
     }
-    public function delete_brand($brand_id){
-        $query = "DELETE FROM tbl_brand WHERE brand_id = '$brand_id'";
-        $result= $this ->db->delete($query);
-        header('Location:brandlist.php');
-        return $result;
+
+    // Xóa khóa học theo course_id
+    public function delete_course($course_id) {
+        $query = "DELETE FROM course WHERE course_id = '$course_id'";
+        return $this->db->delete($query);
     }
 }
-
 ?>

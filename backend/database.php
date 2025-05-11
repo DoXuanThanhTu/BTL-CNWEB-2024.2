@@ -1,5 +1,5 @@
 <?php
-include "src/config.php";
+include "backend/config.php";
 ?>
 <?php
 class Database{
